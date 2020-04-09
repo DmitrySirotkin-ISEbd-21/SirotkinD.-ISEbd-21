@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Collections;
+using System;
+
 namespace WindowsFormsLab2
 {
     /// <summary>
     /// Параметризованны класс для хранения набора объектов от интерфейса ITransport
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Parking<T>>
+        where T : class, ITransport
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -33,6 +37,14 @@ namespace WindowsFormsLab2
         /// Размер парковочного места (высота)
         /// </summary>
         private const int _placeSizeHeight = 80;
+        private int _currentIndex;
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -43,6 +55,7 @@ namespace WindowsFormsLab2
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
+            _currentIndex = -1;
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
@@ -58,6 +71,10 @@ namespace WindowsFormsLab2
             if (p._places.Count == p._maxCount)
             {
                 throw new ParkingOverflowException();
+            }
+            if (p._places.ContainsValue(tractor))
+            {
+                throw new ParkingAlreadyHaveException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -97,9 +114,7 @@ namespace WindowsFormsLab2
  private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
-        }
-        
-        
+        }       
         /// <summary>
         /// Метод отрисовки парковки
         /// </summary>
@@ -107,10 +122,9 @@ namespace WindowsFormsLab2
  public void Draw(Graphics g)
         {
             DrawMarking(g);
-            var keys = _places.Keys.ToList();
-            for (int i = 0; i < keys.Count; i++)
+            foreach (var tractor in _places)
             {
-                _places[keys[i]].DrawTract(g);
+                tractor.Value.DrawTract(g); 
             }
         }
         /// <summary>
@@ -143,7 +157,7 @@ namespace WindowsFormsLab2
             }
             set
             {
-                if (CheckFreePlace(ind))    
+                if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
@@ -154,5 +168,82 @@ namespace WindowsFormsLab2
                 }
             }
         }
-    }
+        
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }  
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }  
+ 
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }  
+        public void Reset()
+        {             _currentIndex = -1;
+        }  
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }  
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }  
+        public int CompareTo(Parking<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Tract1 && other._places[thisKeys[i]] is Main)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is Main && other._places[thisKeys[i]] is Tract1)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Tract1 && other._places[thisKeys[i]] is Tract1)
+                    {
+                        return (_places[thisKeys[i]] is Tract1).CompareTo(other._places[thisKeys[i]] is Tract1);
+                    }
+                    if (_places[thisKeys[i]] is Main && other._places[thisKeys[i]] is Main)
+                    {
+                        return (_places[thisKeys[i]] is Main).CompareTo(other._places[thisKeys[i]] is Main);
+                    }
+                }
+            }
+            return 0;
+        }
+    } 
 }

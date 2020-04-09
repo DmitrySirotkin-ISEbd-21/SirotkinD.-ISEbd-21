@@ -52,7 +52,7 @@ namespace WindowsFormsLab2
                 return null;
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -64,26 +64,21 @@ namespace WindowsFormsLab2
                 foreach (var level in parkingStages)
                 {
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (var trac in level)
                     {
-                        var trac = level[i];
-                        if (trac != null)
+                        if (trac.GetType().Name == "Tract1")
                         {
-                            if (trac.GetType().Name == "Tract1")
-                            {
-                                sw.WriteLine(i + ":Tract1:" + trac);
-                            }
-                            if (trac.GetType().Name == "Main")
-                            {
-                                sw.WriteLine(i + ":Main:" + trac);
-                            }
+                            sw.WriteLine(":Tract1:" + trac);
+                        }
+                        if (trac.GetType().Name == "Main")
+                        {
+                            sw.WriteLine(":Main:" + trac);
                         }
                     }
                 }
             }
-            return true;
         }
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -135,8 +130,11 @@ namespace WindowsFormsLab2
                         parkingStages[counter][Convert.ToInt32(splitLine[0])] = trac1;
                     }
                 }
-                return true;
             }
+        }
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }
