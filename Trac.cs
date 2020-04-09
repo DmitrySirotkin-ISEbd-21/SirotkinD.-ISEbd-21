@@ -4,8 +4,6 @@ namespace WindowsFormsTrac
 {
     public class Trac : BigTract
     {
-        private Color yellow;
-
         public bool FrontKovsh { private set; get; }
         public bool BackKovsh { private set; get; }
         public Color DopColor { protected set; get; }

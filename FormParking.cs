@@ -12,65 +12,99 @@ namespace WindowsFormsTrac
 {
     public partial class FormParking : Form
     {
-        Parking<ITransport> parking;
+        MultiLevelParking parking;
+
+        private const int countLevel = 5;
+
         public FormParking()
         {
             InitializeComponent();
-            parking = new Parking<ITransport>(20, pictureBoxTrac1.Width, pictureBoxTrac1.Height);
-            Draw();
+            parking = new MultiLevelParking(countLevel, pictureBoxTrac1.Width, pictureBoxTrac1.Height);
+            for (int i = 0; i < countLevel; i++)
+            {
+                listBox123.Items.Add("Уровень " + (i + 1));
+            }
+            listBox123.SelectedIndex = 0;
         }
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxTrac1.Width, pictureBoxTrac1.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxTrac1.Image = bmp;
-        }
-        private void buttonTake_Click(object sender, EventArgs e)
-        {
-            if (maskedTextBox1.Text != "")
+            if (listBox123.SelectedIndex > -1)
             {
-                var car = parking - Convert.ToInt32(maskedTextBox1.Text);
-                if (car != null)
-                {
-                    Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    car.SetPosition(5, 5, pictureBox1.Width, pictureBox1.Height);
-                    car.Drawtractor(gr); pictureBox1.Image = bmp;
-                }
-                else
-                {
-                    Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                    pictureBox1.Image = bmp;
-                }
-                Draw();
+                Bitmap bmp = new Bitmap(pictureBoxTrac1.Width, pictureBoxTrac1.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                parking[listBox123.SelectedIndex].Draw(gr);
+                pictureBoxTrac1.Image = bmp;
             }
         }
-    
 
-        private void buttonSetL_Clik(object sender, EventArgs e)
+
+        private void buttonTake_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var tractor = new BigTract(100, 1000, dialog.Color);
-                int place = parking + tractor;
-                Draw();
+                if (listBox123.SelectedIndex > -1)
+                {
+                    if (maskedTextBox1.Text != "")
+                    {
+                        var car = parking[listBox123.SelectedIndex] - Convert.ToInt32(maskedTextBox1.Text);
+                        if (car != null)
+                        {
+                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                            Graphics gr = Graphics.FromImage(bmp); car.SetPosition(5, 5, pictureBox1.Width, pictureBox1.Height);
+                            car.Drawtractor(gr);
+                            pictureBox1.Image = bmp;
+                        }
+                        else
+                        {
+                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height); pictureBox1.Image = bmp;
+                        }
+                        Draw();
+                    }
+                }Draw();
             }
         }
 
         private void buttonSetH_Clik(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBox123.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var car = new Trac(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                    int place = parking + car;
-                    Draw();
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var tractor = new Trac(100, 1000, dialog.Color, dialogDop.Color, true, true);
+                        int place = parking[listBox123.SelectedIndex] + tractor;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
                 }
+            }
+        }
+
+        private void listBox123_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
+        }
+
+        private void buttonSetL_Click(object sender, EventArgs e)
+        {
+            if (listBox123.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var tractor = new BigTract(100, 1000, dialog.Color);
+                    int place = parking[listBox123.SelectedIndex] + tractor;
+                    if (place == -1)
+                    {
+                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                Draw();
             }
         }
     }
