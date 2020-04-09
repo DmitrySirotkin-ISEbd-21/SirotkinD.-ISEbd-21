@@ -1,16 +1,44 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-namespace WindowsFormsTrac
+namespace WindowsFormsLab2
 {
+    /// <summary>
+    /// Параметризованны класс для хранения набора объектов от интерфейса ITransport
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Parking<T> where T : class, ITransport
     {
+        /// <summary>
+        /// Массив объектов, которые храним
+        /// </summary>
         private Dictionary<int, T> _places;
+        /// <summary>
+        /// Максимальное количество мест на парковке
+        /// </summary>
         private int _maxCount;
+        /// <summary>
+        /// Ширина окна отрисовки
+        /// </summary>
         private int PictureWidth { get; set; }
+        /// <summary>
+        /// Высота окна отрисовки
+        /// </summary>
         private int PictureHeight { get; set; }
+        /// <summary>
+        /// Размер парковочного места (ширина)
+        /// </summary>
         private const int _placeSizeWidth = 210;
+        /// <summary>
+        /// Размер парковочного места (высота)
+        /// </summary>
         private const int _placeSizeHeight = 80;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="sizes">Количество мест на парковке</param>
+        /// <param name="pictureWidth">Рамзер парковки - ширина</param>
+        /// <param name="pictureHeight">Рамзер парковки - высота</param>
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
@@ -18,24 +46,40 @@ namespace WindowsFormsTrac
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-        public static int operator +(Parking<T> p, T car)
+        /// <summary>
+        /// Перегрузка оператора сложения
+        /// Логика действия: на парковку добавляется трактор
+        /// </summary>
+        /// <param name="p">Парковка</param>
+        /// <param name="car">Добавляемый трактор</param>
+        /// <returns></returns>
+        public static int operator +(Parking<T> p, T tractor)
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, car);
-                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 * _placeSizeHeight + 15, p.PictureWidth, p.PictureHeight);
+                    p._places.Add(i, tractor);
+                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
+                     i % 5 * _placeSizeHeight + 15, p.PictureWidth,
+                    p.PictureHeight);
                     return i;
                 }
             }
             return -1;
         }
-        public static T operator -(Parking<T> p, int index)
+        /// <summary>
+        /// Перегрузка оператора вычитания
+        /// Логика действия: с парковки забираем трактор
+        /// </summary>
+        /// <param name="p">Парковка</param>
+        /// <param name="index">Индекс места, с которого пытаемся извлечьобъект</param>
+        /// <returns></returns>
+ public static T operator -(Parking<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
@@ -43,21 +87,36 @@ namespace WindowsFormsTrac
                 p._places.Remove(index);
                 return tractor;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
-        private bool CheckFreePlace(int index)
+        /// <summary>
+        /// Метод проверки заполнености парковочного места (ячейки массива)
+        /// </summary>
+        /// <param name="index">Номер парковочного места (порядковый номер вмассиве)</param>
+        /// <returns></returns>
+ private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
-        public void Draw(Graphics g)
+        
+        
+        /// <summary>
+        /// Метод отрисовки парковки
+        /// </summary>
+        /// <param name="g"></param>
+ public void Draw(Graphics g)
         {
             DrawMarking(g);
             var keys = _places.Keys.ToList();
             for (int i = 0; i < keys.Count; i++)
             {
-                _places[keys[i]].Drawtractor(g);
+                _places[keys[i]].DrawTract(g);
             }
         }
+        /// <summary>
+        /// Метод отрисовки разметки парковочных мест
+        /// </summary>
+        /// <param name="g"></param>
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
@@ -84,10 +143,14 @@ namespace WindowsFormsTrac
             }
             set
             {
-                if (CheckFreePlace(ind))
+                if (CheckFreePlace(ind))    
                 {
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
                 }
             }
         }

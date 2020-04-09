@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsTrac
+namespace WindowsFormsLab2
 {
-    public delegate void TrucDelegate(ITransport transport);
+    public delegate void carDelegate(ITransport tractor);
     static class Program
     {
         /// <summary>
@@ -17,7 +17,7 @@ namespace WindowsFormsTrac
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormParking());
+            Application.Run(new Designer());
         }
     }
 }

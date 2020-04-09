@@ -1,25 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
-namespace WindowsFormsTrac
+namespace WindowsFormsLab2
 {
+    /// <summary>
+    /// Класс-хранидище парковок
+    /// </summary>
     public class MultiLevelParking
     {
+        /// <summary>
+        /// Список с уровнями парковки
+        /// </summary>
         List<Parking<ITransport>> parkingStages;
-        private const int countPlaces = 15;
-
-        public int PictureWidth { get; private set; }
-        public int PictureHeight { get; private set; }
-
+        /// <summary>
+        /// Сколько мест на каждом уровне
+        /// </summary>
+        private const int countPlaces = 20;
+        private int pictureWidth;
+        private int pictureHeight;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="countStages">Количество уровенй парковки</param>
+        /// <param name="pictureWidth"></param>
+        /// <param name="pictureHeight"></param>
         public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
         {
             parkingStages = new List<Parking<ITransport>>();
+            this.pictureWidth = pictureWidth;
+            this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
                 parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,pictureHeight));
             }
         }
+        /// <summary>
+        /// Индексатор
+        /// </summary>
+        /// <param name="ind"></param>
+        /// <returns></returns>
         public Parking<ITransport> this[int ind]
         {
             get
@@ -45,16 +66,16 @@ namespace WindowsFormsTrac
                     sw.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var tractor = level[i];
-                        if (tractor != null)
+                        var trac = level[i];
+                        if (trac != null)
                         {
-                            if (tractor.GetType().Name == "BigTract")
+                            if (trac.GetType().Name == "Tract1")
                             {
-                                sw.WriteLine(i + ":BigTract:" + tractor);
+                                sw.WriteLine(i + ":Tract1:" + trac);
                             }
-                            if (tractor.GetType().Name == "Trac")
+                            if (trac.GetType().Name == "Main")
                             {
-                                sw.WriteLine(i + ":Trac:" + tractor);
+                                sw.WriteLine(i + ":Main:" + trac);
                             }
                         }
                     }
@@ -66,7 +87,7 @@ namespace WindowsFormsTrac
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             int counter = -1;
             ITransport trac1 = null;
@@ -86,14 +107,14 @@ namespace WindowsFormsTrac
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
                 while ((line = sr.ReadLine()) != null)
                 {
                     if (line == "Level")
                     {
                         counter++;
-                        parkingStages.Add(new Parking<ITransport>(countPlaces, PictureWidth, PictureHeight));
+                        parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
                         continue;
                     }
                     if (string.IsNullOrEmpty(line))
@@ -103,13 +124,13 @@ namespace WindowsFormsTrac
                     string[] splitLine = line.Split(':');
                     if (splitLine.Length > 2)
                     {
-                        if (splitLine[1] == "BigTract")
+                        if (splitLine[1] == "Main")
                         {
-                            trac1 = new BigTract(splitLine[2]);
+                            trac1 = new Main(splitLine[2]);
                         }
                         else
                         {
-                            trac1 = new Trac(splitLine[2]);
+                            trac1 = new Tract1(splitLine[2]);
                         }
                         parkingStages[counter][Convert.ToInt32(splitLine[0])] = trac1;
                     }
@@ -117,6 +138,5 @@ namespace WindowsFormsTrac
                 return true;
             }
         }
-
     }
 }
