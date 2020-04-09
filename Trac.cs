@@ -28,5 +28,9 @@ namespace WindowsFormsTrac
             }
             base.Drawtractor(g);
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

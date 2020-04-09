@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.pictureBoxTrac1 = new System.Windows.Forms.PictureBox();
-            this.buttonSetLightTr = new System.Windows.Forms.Button();
-            this.buttonSetHighTr = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonTake = new System.Windows.Forms.Button();
             this.listBox123 = new System.Windows.Forms.ListBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrac1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,26 +48,6 @@
             this.pictureBoxTrac1.Size = new System.Drawing.Size(639, 450);
             this.pictureBoxTrac1.TabIndex = 0;
             this.pictureBoxTrac1.TabStop = false;
-            // 
-            // buttonSetLightTr
-            // 
-            this.buttonSetLightTr.Location = new System.Drawing.Point(666, 129);
-            this.buttonSetLightTr.Name = "buttonSetLightTr";
-            this.buttonSetLightTr.Size = new System.Drawing.Size(118, 44);
-            this.buttonSetLightTr.TabIndex = 1;
-            this.buttonSetLightTr.Text = "Припарковать обычный трактор";
-            this.buttonSetLightTr.UseVisualStyleBackColor = true;
-            this.buttonSetLightTr.Click += new System.EventHandler(this.buttonSetL_Click);
-            // 
-            // buttonSetHighTr
-            // 
-            this.buttonSetHighTr.Location = new System.Drawing.Point(666, 179);
-            this.buttonSetHighTr.Name = "buttonSetHighTr";
-            this.buttonSetHighTr.Size = new System.Drawing.Size(118, 47);
-            this.buttonSetHighTr.TabIndex = 2;
-            this.buttonSetHighTr.Text = "Припарковать тяжёлый трактор";
-            this.buttonSetHighTr.UseVisualStyleBackColor = true;
-            this.buttonSetHighTr.Click += new System.EventHandler(this.buttonSetH_Clik);
             // 
             // maskedTextBox1
             // 
@@ -122,19 +101,28 @@
             this.listBox123.TabIndex = 5;
             this.listBox123.SelectedIndexChanged += new System.EventHandler(this.listBox123_SelectedIndexChanged);
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(666, 133);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(120, 51);
+            this.buttonAdd.TabIndex = 8;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd1_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBox123);
             this.Controls.Add(this.buttonTake);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.buttonSetHighTr);
-            this.Controls.Add(this.buttonSetLightTr);
             this.Controls.Add(this.pictureBoxTrac1);
             this.Name = "FormParking";
             this.Text = "Парковка";
@@ -148,13 +136,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxTrac1;
-        private System.Windows.Forms.Button buttonSetLightTr;
-        private System.Windows.Forms.Button buttonSetHighTr;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonTake;
         private System.Windows.Forms.ListBox listBox123;
+        private System.Windows.Forms.Button buttonAdd;
     }
 }

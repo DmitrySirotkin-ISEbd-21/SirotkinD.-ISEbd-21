@@ -15,6 +15,7 @@ namespace WindowsFormsTrac
         MultiLevelParking parking;
 
         private const int countLevel = 5;
+        FormCarConfig form;
 
         public FormParking()
         {
@@ -40,7 +41,6 @@ namespace WindowsFormsTrac
 
         private void buttonTake_Click(object sender, EventArgs e)
         {
-            {
                 if (listBox123.SelectedIndex > -1)
                 {
                     if (maskedTextBox1.Text != "")
@@ -59,53 +59,34 @@ namespace WindowsFormsTrac
                         }
                         Draw();
                     }
-                }Draw();
-            }
+                }Draw();        
         }
 
-        private void buttonSetH_Clik(object sender, EventArgs e)
-        {
-            if (listBox123.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var tractor = new Trac(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                        int place = parking[listBox123.SelectedIndex] + tractor;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
 
         private void listBox123_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
-
-        private void buttonSetL_Click(object sender, EventArgs e)
+        private void AddTruc(ITransport tractor)
         {
-            if (listBox123.SelectedIndex > -1)
+            if (tractor != null && listBox123.SelectedIndex > -1)
             {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
+                int place = parking[listBox123.SelectedIndex] + tractor;
+                if (place > -1)
                 {
-                    var tractor = new BigTract(100, 1000, dialog.Color);
-                    int place = parking[listBox123.SelectedIndex] + tractor;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Draw();
                 }
-                Draw();
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
             }
+        }
+        private void buttonAdd1_Click(object sender, EventArgs e)
+        {
+            form = new FormCarConfig();
+            form.AddEvent(AddTruc);
+            form.Show();
         }
     }
 }

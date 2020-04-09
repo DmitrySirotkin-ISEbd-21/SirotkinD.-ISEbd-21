@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsTrac
 {
+    public delegate void TrucDelegate(ITransport transport);
     static class Program
     {
         /// <summary>
