@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 public enum Direction
 {
     Up,
@@ -17,6 +18,16 @@ namespace WindowsFormsTrac
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+        public BigTract(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
 
         public override void MoveTransport(Direction direction)
@@ -59,6 +70,10 @@ namespace WindowsFormsTrac
             Brush br = new SolidBrush(Color.Black);
             g.FillEllipse(br, _startPosX + 20, _startPosY + 30, 25, 25);
             g.FillEllipse(br, _startPosX + 60, _startPosY + 40, 15, 15);
+        }
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }
