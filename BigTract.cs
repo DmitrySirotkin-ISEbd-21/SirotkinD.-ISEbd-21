@@ -8,11 +8,11 @@ public enum Direction
 }
 namespace WindowsFormsTrac
 {
-    public class BigTrac : Vehicle
+    public class BigTract : Vehicle
     {
         protected const int tractorWidth = 100;
         protected const int tractorHeight = 60;
-        public BigTrac(int maxSpeed, float weight, Color mainColor)
+        public BigTract(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;

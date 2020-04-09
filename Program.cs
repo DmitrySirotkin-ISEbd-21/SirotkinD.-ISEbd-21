@@ -16,7 +16,7 @@ namespace WindowsFormsTrac
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTract());
+            Application.Run(new FormParking());
         }
     }
 }

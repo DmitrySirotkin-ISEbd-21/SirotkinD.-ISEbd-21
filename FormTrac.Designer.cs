@@ -47,6 +47,7 @@
             this.pictureBoxTrac.Size = new System.Drawing.Size(884, 461);
             this.pictureBoxTrac.TabIndex = 0;
             this.pictureBoxTrac.TabStop = false;
+            this.pictureBoxTrac.Click += new System.EventHandler(this.pictureBoxTrac_Click);
             // 
             // buttonUp
             // 

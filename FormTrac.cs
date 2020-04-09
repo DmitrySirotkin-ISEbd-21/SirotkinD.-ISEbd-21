@@ -6,7 +6,7 @@ namespace WindowsFormsTrac
 {
     public partial class FormTract : Form
     {
-        private BigTrac tractor;
+        private BigTract tractor;
         public FormTract()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace WindowsFormsTrac
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            tractor = new BigTrac(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
             tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width,pictureBoxTrac.Height);
             Draw();
         }
@@ -55,6 +55,11 @@ namespace WindowsFormsTrac
             tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width,
            pictureBoxTrac.Height);
             Draw();
+        }
+
+        private void pictureBoxTrac_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

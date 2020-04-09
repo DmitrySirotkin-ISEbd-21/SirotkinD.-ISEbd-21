@@ -2,7 +2,7 @@
 using System.Drawing;
 namespace WindowsFormsTrac
 {
-    public class Trac : BigTrac
+    public class Trac : BigTract
     {
         private Color yellow;
 
