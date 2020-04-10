@@ -50,6 +50,33 @@ namespace WindowsFormsTrac
                     {
                         MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+            parking = new Parking<ITransport>(20, pictureBoxTracSpawn.Width, pictureBoxTracSpawn.Height);
+            Draw();
+        }
+        private void Draw()
+        {
+            Bitmap bmp = new Bitmap(pictureBoxTracSpawn.Width, pictureBoxTracSpawn.Height);
+            Graphics gr = Graphics.FromImage(bmp);
+            parking.Draw(gr);
+            pictureBoxTracSpawn.Image = bmp;
+        }
+
+        private void buttonZabratTractor_Click(object sender, EventArgs e)
+        {
+            if (NomerMesta.Text != "")
+            {
+                var car = parking - Convert.ToInt32(NomerMesta.Text);
+                if (car != null)
+                {
+                    Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
+                    Graphics gr = Graphics.FromImage(bmp);
+                    car.SetPosition(5, 5, pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
+                    car.Drawtractor(gr); pictureBoxTractAfterZabrat.Image = bmp;
+                }
+                else
+                {
+                    Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
+                    pictureBoxTractAfterZabrat.Image = bmp;
                 }
                 Draw();
             }
@@ -59,30 +86,7 @@ namespace WindowsFormsTrac
         {
             Draw();
         }
-
         private void buttonParkingTractSKovshami_Clik(object sender, EventArgs e)
-        {
-            if (listBoxLVL.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var tractor = new Trac(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                        int place = parking[listBoxLVL.SelectedIndex] + tractor;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
-
-        private void buttonZabratTract_Click(object sender, EventArgs e)
         {
 
             {
@@ -108,5 +112,17 @@ namespace WindowsFormsTrac
                 Draw();
             }
         }
+
+        private void buttonParkingTractBezKovshey_Clik(object sender, EventArgs e)
+        {
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var tractor = new BigTract(100, 1000, dialog.Color);
+                int place = parking + tractor;
+                Draw();
+            }
+        }
     }
 }
+
