@@ -18,7 +18,6 @@ namespace WindowsFormsTrac
             tractor.Drawtractor(gr);
             pictureBoxTrac.Image = bmp;
         }
-
         private void buttonMove_Click(object sender, EventArgs e)
         {
             string name = (sender as Button).Name;
@@ -39,7 +38,6 @@ namespace WindowsFormsTrac
             }
             Draw();
         }
-
         private void buttonCreateTrac_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
