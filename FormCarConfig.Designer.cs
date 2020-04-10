@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.pictureBoxTR = new System.Windows.Forms.PictureBox();
+            this.groupBoxTTT = new System.Windows.Forms.GroupBox();
+            this.labelHigh = new System.Windows.Forms.Label();
+            this.labelLight = new System.Windows.Forms.Label();
+            this.pictureBoxTTT = new System.Windows.Forms.PictureBox();
+            this.panelTTT = new System.Windows.Forms.Panel();
+            this.labelDop = new System.Windows.Forms.Label();
+            this.labelMain = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelTractorOBV = new System.Windows.Forms.Label();
             this.labelDrawTract2 = new System.Windows.Forms.Label();
@@ -60,6 +67,82 @@
             this.pictureBoxTR.Size = new System.Drawing.Size(141, 76);
             this.pictureBoxTR.TabIndex = 0;
             this.pictureBoxTR.TabStop = false;
+            //
+            // groupBoxTTT
+            // 
+            this.groupBoxTTT.Controls.Add(this.labelHigh);
+            this.groupBoxTTT.Controls.Add(this.labelLight);
+            this.groupBoxTTT.Location = new System.Drawing.Point(12, 22);
+            this.groupBoxTTT.Name = "groupBoxTTT";
+            this.groupBoxTTT.Size = new System.Drawing.Size(132, 100);
+            this.groupBoxTTT.TabIndex = 0;
+            this.groupBoxTTT.TabStop = false;
+            this.groupBoxTTT.Text = "Типы тракторов";
+            // 
+            // labelHigh
+            // 
+            this.labelHigh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelHigh.Location = new System.Drawing.Point(15, 61);
+            this.labelHigh.Name = "labelHigh";
+            this.labelHigh.Size = new System.Drawing.Size(100, 23);
+            this.labelHigh.TabIndex = 1;
+            this.labelHigh.Text = "Тяжёлый";
+            this.labelHigh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lableHigh_MouseDown);
+            // 
+            // labelLight
+            // 
+            this.labelLight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelLight.Location = new System.Drawing.Point(15, 27);
+            this.labelLight.Name = "labelLight";
+            this.labelLight.Size = new System.Drawing.Size(100, 23);
+            this.labelLight.TabIndex = 0;
+            this.labelLight.Text = "Лёгкий";
+            this.labelLight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lableLight_MouseDown);
+            // 
+            // pictureBoxTTT
+            // 
+            this.pictureBoxTTT.Location = new System.Drawing.Point(21, 7);
+            this.pictureBoxTTT.Name = "pictureBoxTTT";
+            this.pictureBoxTTT.Size = new System.Drawing.Size(136, 100);
+            this.pictureBoxTTT.TabIndex = 1;
+            this.pictureBoxTTT.TabStop = false;
+            // 
+            // panelTTT
+            // 
+            this.panelTTT.AllowDrop = true;
+            this.panelTTT.Controls.Add(this.labelDop);
+            this.panelTTT.Controls.Add(this.labelMain);
+            this.panelTTT.Controls.Add(this.pictureBoxTTT);
+            this.panelTTT.Location = new System.Drawing.Point(166, 22);
+            this.panelTTT.Name = "panelTTT";
+            this.panelTTT.Size = new System.Drawing.Size(176, 208);
+            this.panelTTT.TabIndex = 2;
+            this.panelTTT.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelTTT_DragDrop);
+            this.panelTTT.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelTTT_DragEnter);
+            // 
+            // labelDop
+            // 
+            this.labelDop.AllowDrop = true;
+            this.labelDop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelDop.Location = new System.Drawing.Point(35, 156);
+            this.labelDop.Name = "labelDop";
+            this.labelDop.Size = new System.Drawing.Size(100, 23);
+            this.labelDop.TabIndex = 3;
+            this.labelDop.Text = "Дополнительный";
+            this.labelDop.DragDrop += new System.Windows.Forms.DragEventHandler(this.lableDop_DragDrop);
+            this.labelDop.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelDop_DragEnter);
+            // 
+            // labelMain
+            // 
+            this.labelMain.AllowDrop = true;
+            this.labelMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMain.Location = new System.Drawing.Point(35, 124);
+            this.labelMain.Name = "labelMain";
+            this.labelMain.Size = new System.Drawing.Size(100, 23);
+            this.labelMain.TabIndex = 2;
+            this.labelMain.Text = "Основной";
+            this.labelMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.lableMain_DragDrop);
+            this.labelMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.lableMain_DragEnter);
             // 
             // groupBox1
             // 
@@ -92,17 +175,17 @@
             this.labelDrawTract2.Text = "Без ковшей";
             this.labelDrawTract2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelDrawTract2_MouseDown);
             // 
-            // panel1
+            // panelMain
             // 
             this.panel1.AllowDrop = true;
             this.panel1.Controls.Add(this.lableDopColor);
             this.panel1.Controls.Add(this.lableMainColor);
             this.panel1.Controls.Add(this.pictureBoxTR);
             this.panel1.Location = new System.Drawing.Point(168, 12);
-            this.panel1.Name = "panel1";
+            this.panel1.Name = "panelMain";
             this.panel1.Size = new System.Drawing.Size(200, 183);
             this.panel1.TabIndex = 2;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelMain_DragDrop);
             this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelMain_DragEnter);
             // 
             // lableDopColor
@@ -261,6 +344,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxTR;
+        private System.Windows.Forms.GroupBox groupBoxTTT;
+        private System.Windows.Forms.Label labelHigh;
+        private System.Windows.Forms.Label labelLight;
+        private System.Windows.Forms.PictureBox pictureBoxTTT;
+        private System.Windows.Forms.Panel panelTTT;
+        private System.Windows.Forms.Label labelDop;
+        private System.Windows.Forms.Label labelMain;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelTractorOBV;
         private System.Windows.Forms.Label labelDrawTract2;
