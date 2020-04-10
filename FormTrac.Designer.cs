@@ -101,6 +101,7 @@
             this.buttonCreateSmall.Text = "Создать";
             this.buttonCreateSmall.UseVisualStyleBackColor = true;
             this.buttonCreateSmall.Click += new System.EventHandler(this.buttonCreateSmall_Click);
+            this.buttonCreateSmall.Click += new System.EventHandler(this.buttonCreateSmall);
             // 
             // buttonCreateBig
             // 
