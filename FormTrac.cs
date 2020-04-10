@@ -1,3 +1,5 @@
+
+
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -39,7 +41,6 @@ namespace WindowsFormsTrac
             }
             Draw();
         }
-
         private void buttonCreateBig_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -53,6 +54,14 @@ namespace WindowsFormsTrac
         {
             Random rnd = new Random();
             tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width, pictureBoxTrac.Height);
+            Draw();
+        }
+
+        private void buttonCreateSmall(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            tractor = new BigTrac(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
             tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width, pictureBoxTrac.Height);
             Draw();
         }
