@@ -50,6 +50,7 @@ namespace WindowsFormsLab2
                 eventAddtractor += ev;
             }
         }
+
         private void labelDrawTract2_MouseDown(object sender, MouseEventArgs e)
         {
             labelDrawTract2.DoDragDrop(labelDrawTract2.Text, DragDropEffects.Move | DragDropEffects.Copy);
@@ -61,21 +62,6 @@ namespace WindowsFormsLab2
         }
         private void panel1_DragEnter(object sender, DragEventArgs e)
         {
-
-        }
-        private void panel1_DragDrop(object sender, DragEventArgs e)
-        {
-            switch (e.Data.GetData(DataFormats.Text).ToString())
-            {
-                case "Без ковшей":
-                    tractor = new BigTract(100, 500, Color.Gold);
-                    break;
-                case "С ковшами":
-                    tractor = new Trac(100, 500, Color.White, Color.Black, true, true);
-                    break;
-            }
-            Draw();
-        }
 
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
         {
@@ -159,7 +145,15 @@ namespace WindowsFormsLab2
             }
             Draw();
         }
+        private void lableLight_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelLight.DoDragDrop(labelLight.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
 
-
+        private void lableHigh_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelHigh.DoDragDrop(labelHigh.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
     }
 }
+  
