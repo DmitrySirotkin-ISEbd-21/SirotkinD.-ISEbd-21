@@ -100,7 +100,7 @@
             this.buttonCreateSmall.TabIndex = 5;
             this.buttonCreateSmall.Text = "Создать";
             this.buttonCreateSmall.UseVisualStyleBackColor = true;
-            this.buttonCreateSmall.Click += new System.EventHandler(this.buttonCreateSmall);
+            this.buttonCreateSmall.Click += new System.EventHandler(this.buttonCreateSmall_Click);
             // 
             // buttonCreateBig
             // 
