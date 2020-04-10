@@ -1,18 +1,11 @@
 ﻿using System.Drawing;
-public enum Direction
-{
-    Up,
-    Down,
-    Left,
-    Right
-}
 namespace WindowsFormsTrac
 {
-    public class BigTract : Vehicle
+    public class BigTrac : Vehicle
     {
         protected const int tractorWidth = 100;
         protected const int tractorHeight = 60;
-        public BigTract(int maxSpeed, float weight, Color mainColor)
+        public BigTrac(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
