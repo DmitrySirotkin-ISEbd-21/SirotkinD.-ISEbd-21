@@ -111,6 +111,13 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            this.listBoxLVL.FormattingEnabled = true;
+            this.listBoxLVL.Location = new System.Drawing.Point(666, 12);
+            this.listBoxLVL.Name = "listBoxLVL";
+            this.listBoxLVL.Size = new System.Drawing.Size(120, 95);
+            this.listBoxLVL.TabIndex = 5;
+            this.listBoxLVL.SelectedIndexChanged += new System.EventHandler(this.listBoxLVL_SelectedIndexChanged);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
