@@ -18,17 +18,6 @@ namespace WindowsFormsTrac
             tractor.Drawtractor(gr);
             pictureBoxTrac.Image = bmp;
         }
-
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow,true, true);
-            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width,
-           pictureBoxTrac.Height);
-            Draw();
-
-        }
-
         private void buttonMove_Click(object sender, EventArgs e)
         {
             string name = (sender as Button).Name;
@@ -47,6 +36,14 @@ namespace WindowsFormsTrac
                     tractor.MoveTransport(Direction.Right);
                     break;
             }
+            Draw();
+        }
+        private void buttonCreateTrac_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, true, true);
+            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width,
+           pictureBoxTrac.Height);
             Draw();
         }
     }
