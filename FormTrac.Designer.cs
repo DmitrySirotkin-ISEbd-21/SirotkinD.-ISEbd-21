@@ -34,7 +34,7 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonCreateSmall = new System.Windows.Forms.Button();
             this.buttonCreate1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrac)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +47,6 @@
             this.pictureBoxTrac.Size = new System.Drawing.Size(884, 461);
             this.pictureBoxTrac.TabIndex = 0;
             this.pictureBoxTrac.TabStop = false;
-            this.pictureBoxTrac.Click += new System.EventHandler(this.pictureBoxTrac_Click);
             // 
             // buttonUp
             // 
@@ -93,15 +92,15 @@
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // buttonCreate
+            // buttonCreateSmall
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreate.TabIndex = 5;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateSmall.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreateSmall.Name = "buttonCreateSmall";
+            this.buttonCreateSmall.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreateSmall.TabIndex = 5;
+            this.buttonCreateSmall.Text = "Создать";
+            this.buttonCreateSmall.UseVisualStyleBackColor = true;
+            this.buttonCreateSmall.Click += new System.EventHandler(this.buttonCreateSmall_Click);
             // 
             // buttonCreate1
             // 
@@ -111,7 +110,7 @@
             this.buttonCreate1.TabIndex = 6;
             this.buttonCreate1.Text = "Создать1";
             this.buttonCreate1.UseVisualStyleBackColor = true;
-            this.buttonCreate1.Click += new System.EventHandler(this.buttonCreate1_Click);
+            this.buttonCreate1.Click += new System.EventHandler(this.buttonCreateHigh_Click);
             // 
             // FormTract
             // 
@@ -119,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.buttonCreate1);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonCreateSmall);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
@@ -139,7 +138,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonCreateSmall;
         private System.Windows.Forms.Button buttonCreate1;
     }
 }
