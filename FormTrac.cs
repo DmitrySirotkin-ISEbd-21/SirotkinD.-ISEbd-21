@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -6,7 +7,7 @@ namespace WindowsFormsTrac
 {
     public partial class FormTract : Form
     {
-        private BigTract tractor;
+        private BigTrac tractor;
         public FormTract()
         {
             InitializeComponent();
@@ -18,6 +19,7 @@ namespace WindowsFormsTrac
             tractor.Drawtractor(gr);
             pictureBoxTrac.Image = bmp;
         }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
             string name = (sender as Button).Name;
@@ -38,12 +40,20 @@ namespace WindowsFormsTrac
             }
             Draw();
         }
-        private void buttonCreateTrac_Click(object sender, EventArgs e)
+
+        private void buttonCreateBig_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, true, true);
-            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width,
-           pictureBoxTrac.Height);
+            tractor = new Trac(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green, Color.Gray, true, true);
+            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width, pictureBoxTrac.Height);
+            Draw();
+        }
+
+        private void buttonCreateSmall(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            tractor = new BigTrac(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width, pictureBoxTrac.Height);
             Draw();
         }
     }
