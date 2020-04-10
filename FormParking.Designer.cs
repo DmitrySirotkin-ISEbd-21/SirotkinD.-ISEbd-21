@@ -80,11 +80,6 @@
             // 
             // buttonParkingTractSKovshami
             // 
-            this.buttonParkingTractSKovshami.Location = new System.Drawing.Point(666, 179);
-            this.buttonParkingTractBezKovshey.Click += new System.EventHandler(this.buttonParkingTractBezKovshey_Clik);
-            // 
-            // buttonParkingTractSKovshami
-            // 
             this.buttonParkingTractSKovshami.Location = new System.Drawing.Point(668, 62);
             this.buttonParkingTractSKovshami.Name = "buttonParkingTractSKovshami";
             this.buttonParkingTractSKovshami.Size = new System.Drawing.Size(118, 47);
