@@ -41,7 +41,8 @@ namespace WindowsFormsTrac
             }
             Draw();
         }
-        private void buttonCreateBig_Click(object sender, EventArgs e)
+
+        private void buttonCreateHigh_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             tractor = new Trac(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green, Color.Gray, true, true);

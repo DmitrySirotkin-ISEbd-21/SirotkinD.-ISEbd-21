@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsTrac
+namespace WindowsFormsTrac
 {
     partial class FormParking
     {
@@ -28,65 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxParkovka = new System.Windows.Forms.PictureBox();
-            this.pictureBoxTracSpawn = new System.Windows.Forms.PictureBox();
-            this.buttonParkingTractBezKovshey = new System.Windows.Forms.Button();
-            this.buttonParkingTractSKovshami = new System.Windows.Forms.Button();
+            this.pictureBoxTrac1 = new System.Windows.Forms.PictureBox();
             this.NomerMesta = new System.Windows.Forms.MaskedTextBox();
             this.pictureBoxTractAfterZabrat = new System.Windows.Forms.PictureBox();
             this.Mesto = new System.Windows.Forms.Label();
             this.ZabratTract = new System.Windows.Forms.Label();
-            this.buttonZabratTract = new System.Windows.Forms.Button();
+            this.buttonTake = new System.Windows.Forms.Button();
             this.listBoxLVL = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParkovka)).BeginInit();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrac1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTractAfterZabrat)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBoxParkovka
+            // pictureBoxTrac1
             // 
-            this.pictureBoxParkovka.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxParkovka.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxParkovka.Name = "pictureBoxParkovka";
-            this.pictureBoxParkovka.Size = new System.Drawing.Size(639, 450);
-            this.pictureBoxParkovka.TabIndex = 0;
-            this.pictureBoxParkovka.TabStop = false;
-            // 
-            // buttonParkingTractBezKovshey
-            // 
-            this.buttonParkingTractBezKovshey.Location = new System.Drawing.Point(666, 129);
-            this.buttonZabratTractor = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTracSpawn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTractAfterZabrat)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // pictureBoxTracSpawn
-            // 
-            this.pictureBoxTracSpawn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxTracSpawn.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxTracSpawn.Name = "pictureBoxTracSpawn";
-            this.pictureBoxTracSpawn.Size = new System.Drawing.Size(639, 450);
-            this.pictureBoxTracSpawn.TabIndex = 0;
-            this.pictureBoxTracSpawn.TabStop = false;
-            // 
-            // buttonParkingTractBezKovshey
-            // 
-            this.buttonParkingTractBezKovshey.Location = new System.Drawing.Point(668, 12);
-            this.buttonParkingTractBezKovshey.Name = "buttonParkingTractBezKovshey";
-            this.buttonParkingTractBezKovshey.Size = new System.Drawing.Size(118, 44);
-            this.buttonParkingTractBezKovshey.TabIndex = 1;
-            this.buttonParkingTractBezKovshey.Text = "Припарковать обычный трактор";
-            this.buttonParkingTractBezKovshey.UseVisualStyleBackColor = true;
-            this.buttonParkingTractBezKovshey.Click += new System.EventHandler(this.buttonParkingTractBezKovshey_Click);
-            // 
-            // buttonParkingTractSKovshami
-            // 
-            this.buttonParkingTractSKovshami.Location = new System.Drawing.Point(668, 62);
-            this.buttonParkingTractSKovshami.Name = "buttonParkingTractSKovshami";
-            this.buttonParkingTractSKovshami.Size = new System.Drawing.Size(118, 47);
-            this.buttonParkingTractSKovshami.TabIndex = 2;
-            this.buttonParkingTractSKovshami.Text = "Припарковать тяжёлый трактор";
-            this.buttonParkingTractSKovshami.UseVisualStyleBackColor = true;
-            this.buttonParkingTractSKovshami.Click += new System.EventHandler(this.buttonParkingTractSKovshami_Clik);
+            this.pictureBoxTrac1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxTrac1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTrac1.Name = "pictureBoxTrac1";
+            this.pictureBoxTrac1.Size = new System.Drawing.Size(639, 450);
+            this.pictureBoxTrac1.TabIndex = 0;
+            this.pictureBoxTrac1.TabStop = false;
             // 
             // NomerMesta
             // 
@@ -121,15 +82,15 @@
             this.ZabratTract.TabIndex = 6;
             this.ZabratTract.Text = "Забрать трактор";
             // 
-            // buttonZabratTract
+            // buttonTake
             // 
-            this.buttonZabratTract.Location = new System.Drawing.Point(690, 332);
-            this.buttonZabratTract.Name = "buttonZabratTract";
-            this.buttonZabratTract.Size = new System.Drawing.Size(75, 23);
-            this.buttonZabratTract.TabIndex = 7;
-            this.buttonZabratTract.Text = "Забрать";
-            this.buttonZabratTract.UseVisualStyleBackColor = true;
-            this.buttonZabratTract.Click += new System.EventHandler(this.buttonZabratTract_Click);
+            this.buttonTake.Location = new System.Drawing.Point(690, 332);
+            this.buttonTake.Name = "buttonTake";
+            this.buttonTake.Size = new System.Drawing.Size(75, 23);
+            this.buttonTake.TabIndex = 7;
+            this.buttonTake.Text = "Забрать";
+            this.buttonTake.UseVisualStyleBackColor = true;
+            this.buttonTake.Click += new System.EventHandler(this.buttonTake_Click);
             // 
             // listBoxLVL
             // 
@@ -139,40 +100,33 @@
             this.listBoxLVL.Size = new System.Drawing.Size(120, 95);
             this.listBoxLVL.TabIndex = 5;
             this.listBoxLVL.SelectedIndexChanged += new System.EventHandler(this.listBoxLVL_SelectedIndexChanged);
-            //
-            // buttonZabratTractor
             // 
-            this.buttonZabratTractor.Location = new System.Drawing.Point(690, 332);
-            this.buttonZabratTractor.Name = "buttonZabratTractor";
-            this.buttonZabratTractor.Size = new System.Drawing.Size(75, 23);
-            this.buttonZabratTractor.TabIndex = 7;
-            this.buttonZabratTractor.Text = "Забрать";
-            this.buttonZabratTractor.UseVisualStyleBackColor = true;
-            this.buttonZabratTractor.Click += new System.EventHandler(this.buttonZabratTractor_Click);
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(666, 133);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(120, 51);
+            this.buttonAdd.TabIndex = 8;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBoxLVL);
-            this.Controls.Add(this.buttonZabratTract);
-            this.Controls.Add(this.buttonZabratTractor);
+            this.Controls.Add(this.buttonTake);
             this.Controls.Add(this.ZabratTract);
             this.Controls.Add(this.Mesto);
             this.Controls.Add(this.pictureBoxTractAfterZabrat);
             this.Controls.Add(this.NomerMesta);
-            this.Controls.Add(this.buttonParkingTractSKovshami);
-            this.Controls.Add(this.buttonParkingTractBezKovshey);
-            this.Controls.Add(this.pictureBoxParkovka);
+            this.Controls.Add(this.pictureBoxTrac1);
             this.Name = "FormParking";
             this.Text = "Парковка";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParkovka)).EndInit();
-            this.Controls.Add(this.pictureBoxTracSpawn);
-            this.Name = "FormParking";
-            this.Text = "Парковка";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTracSpawn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrac1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTractAfterZabrat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -181,16 +135,13 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxParkovka;
-        private System.Windows.Forms.PictureBox pictureBoxTracSpawn;
-        private System.Windows.Forms.Button buttonParkingTractBezKovshey;
-        private System.Windows.Forms.Button buttonParkingTractSKovshami;
+        private System.Windows.Forms.PictureBox pictureBoxTrac1;
         private System.Windows.Forms.MaskedTextBox NomerMesta;
         private System.Windows.Forms.PictureBox pictureBoxTractAfterZabrat;
         private System.Windows.Forms.Label Mesto;
         private System.Windows.Forms.Label ZabratTract;
-        private System.Windows.Forms.Button buttonZabratTract;
+        private System.Windows.Forms.Button buttonTake;
         private System.Windows.Forms.ListBox listBoxLVL;
-        private System.Windows.Forms.Button buttonZabratTractor;
+        private System.Windows.Forms.Button buttonAdd;
     }
 }

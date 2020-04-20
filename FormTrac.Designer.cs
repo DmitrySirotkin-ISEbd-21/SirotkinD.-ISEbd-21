@@ -36,8 +36,8 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
-            this.buttonCreateSmall = new System.Windows.Forms.Button();
-            this.buttonCreateBig = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonCreateHigh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrac)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,33 +94,33 @@
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // buttonCreateSmall
+            // buttonCreate
             // 
-            this.buttonCreateSmall.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreateSmall.Name = "buttonCreateSmall";
-            this.buttonCreateSmall.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreateSmall.TabIndex = 5;
-            this.buttonCreateSmall.Text = "Создать";
-            this.buttonCreateSmall.UseVisualStyleBackColor = true;
-            this.buttonCreateSmall.Click += new System.EventHandler(this.buttonCreateSmall_Click);
+            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 5;
+            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreateSmall_Click);
             // 
-            // buttonCreateBig
+            // buttonCreateHigh
             // 
-            this.buttonCreateBig.Location = new System.Drawing.Point(121, 12);
-            this.buttonCreateBig.Name = "buttonCreateBig";
-            this.buttonCreateBig.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreateBig.TabIndex = 6;
-            this.buttonCreateBig.Text = "Создать1";
-            this.buttonCreateBig.UseVisualStyleBackColor = true;
-            this.buttonCreateBig.Click += new System.EventHandler(this.buttonCreateBig_Click);
+            this.buttonCreateHigh.Location = new System.Drawing.Point(121, 12);
+            this.buttonCreateHigh.Name = "buttonCreateHigh";
+            this.buttonCreateHigh.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreateHigh.TabIndex = 6;
+            this.buttonCreateHigh.Text = "Создать1";
+            this.buttonCreateHigh.UseVisualStyleBackColor = true;
+            this.buttonCreateHigh.Click += new System.EventHandler(this.buttonCreateHigh_Click);
             // 
             // FormTract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.buttonCreateBig);
-            this.Controls.Add(this.buttonCreateSmall);
+            this.Controls.Add(this.buttonCreateHigh);
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
@@ -140,7 +140,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
-        private System.Windows.Forms.Button buttonCreateSmall;
-        private System.Windows.Forms.Button buttonCreateBig;
+        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonCreateHigh;
     }
 }
