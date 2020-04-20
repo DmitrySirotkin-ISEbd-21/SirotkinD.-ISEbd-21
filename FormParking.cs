@@ -1,5 +1,4 @@
-
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,17 +23,17 @@ namespace WindowsFormsTrac
             parking = new MultiLevelParking(countLevel, pictureBoxTrac1.Width, pictureBoxTrac1.Height);
             for (int i = 0; i < countLevel; i++)
             {
-                listBox123.Items.Add("Уровень " + (i + 1));
+                listBoxLVL.Items.Add("Уровень " + (i + 1));
             }
-            listBox123.SelectedIndex = 0;
+            listBoxLVL.SelectedIndex = 0;
         }
         private void Draw()
         {
-            if (listBox123.SelectedIndex > -1)
+            if (listBoxLVL.SelectedIndex > -1)
             {
                 Bitmap bmp = new Bitmap(pictureBoxTrac1.Width, pictureBoxTrac1.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parking[listBox123.SelectedIndex].Draw(gr);
+                parking[listBoxLVL.SelectedIndex].Draw(gr);
                 pictureBoxTrac1.Image = bmp;
             }
         }
@@ -42,21 +41,21 @@ namespace WindowsFormsTrac
 
         private void buttonTake_Click(object sender, EventArgs e)
         {
-                if (listBox123.SelectedIndex > -1)
+                if (listBoxLVL.SelectedIndex > -1)
                 {
-                    if (maskedTextBox1.Text != "")
+                    if (NomerMesta.Text != "")
                     {
-                        var car = parking[listBox123.SelectedIndex] - Convert.ToInt32(maskedTextBox1.Text);
+                        var car = parking[listBoxLVL.SelectedIndex] - Convert.ToInt32(NomerMesta.Text);
                         if (car != null)
                         {
-                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                            Graphics gr = Graphics.FromImage(bmp); car.SetPosition(5, 5, pictureBox1.Width, pictureBox1.Height);
+                            Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
+                            Graphics gr = Graphics.FromImage(bmp); car.SetPosition(5, 5, pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
                             car.Drawtractor(gr);
-                            pictureBox1.Image = bmp;
+                            pictureBoxTractAfterZabrat.Image = bmp;
                         }
                         else
                         {
-                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height); pictureBox1.Image = bmp;
+                            Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height); pictureBoxTractAfterZabrat.Image = bmp;
                         }
                         Draw();
                     }
@@ -65,9 +64,9 @@ namespace WindowsFormsTrac
 
         private void AddTruc(ITransport tractor)
         {
-            if (tractor != null && listBox123.SelectedIndex > -1)
+            if (tractor != null && listBoxLVL.SelectedIndex > -1)
             {
-                int place = parking[listBox123.SelectedIndex] + tractor;
+                int place = parking[listBoxLVL.SelectedIndex] + tractor;
                 if (place > -1)
                 {
                     Draw();

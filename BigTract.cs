@@ -1,4 +1,3 @@
-
 ﻿using System;
 using System.Drawing;
 public enum Direction
