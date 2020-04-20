@@ -1,4 +1,5 @@
 
+
 ﻿namespace WindowsFormsTrac
 {
     partial class FormTract

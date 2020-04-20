@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,22 +41,21 @@ namespace WindowsFormsTrac
 
         private void buttonTake_Click(object sender, EventArgs e)
         {
-            {
                 if (listBoxLVL.SelectedIndex > -1)
                 {
-                    if (maskedTextBox1.Text != "")
+                    if (NomerMesta.Text != "")
                     {
-                        var car = parking[listBoxLVL.SelectedIndex] - Convert.ToInt32(maskedTextBox1.Text);
+                        var car = parking[listBoxLVL.SelectedIndex] - Convert.ToInt32(NomerMesta.Text);
                         if (car != null)
                         {
-                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                            Graphics gr = Graphics.FromImage(bmp); car.SetPosition(5, 5, pictureBox1.Width, pictureBox1.Height);
+                            Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
+                            Graphics gr = Graphics.FromImage(bmp); car.SetPosition(5, 5, pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
                             car.Drawtractor(gr);
-                            pictureBox1.Image = bmp;
+                            pictureBoxTractAfterZabrat.Image = bmp;
                         }
                         else
                         {
-                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height); pictureBox1.Image = bmp;
+                            Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height); pictureBoxTractAfterZabrat.Image = bmp;
                         }
                         Draw();
                     }
@@ -66,7 +65,6 @@ namespace WindowsFormsTrac
         private void AddTruc(ITransport tractor)
         {
             if (tractor != null && listBoxLVL.SelectedIndex > -1)
-            if (listBoxLVL.SelectedIndex > -1)
             {
                 int place = parking[listBoxLVL.SelectedIndex] + tractor;
                 if (place > -1)
@@ -76,17 +74,6 @@ namespace WindowsFormsTrac
                 else
                 {
                     MessageBox.Show("Машину не удалось поставить");
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var tractor = new Trac(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                        int place = parking[listBoxLVL.SelectedIndex] + tractor;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
                 }
             }
         }
@@ -101,27 +88,6 @@ namespace WindowsFormsTrac
             form = new FormCarConfig();
             form.AddEvent(AddTruc);
             form.Show();
-        private void buttonSetL_Click(object sender, EventArgs e)
-        {
-            if (listBoxLVL.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var tractor = new BigTract(100, 1000, dialog.Color);
-                    int place = parking[listBoxLVL.SelectedIndex] + tractor;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                Draw();
-            }
-        }
-
-        private void listBoxLVL_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Draw();
         }
     }
 }
