@@ -2,7 +2,7 @@
 using System.Drawing;
 namespace WindowsFormsTrac
 {
-    public class Trac : BigTract
+    public class Trac : BigTract, IComparable<Trac>, IEquatable<Trac>
     {
         public bool FrontKovsh { private set; get; }
         public bool BackKovsh { private set; get; }
@@ -49,6 +49,73 @@ namespace WindowsFormsTrac
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + FrontKovsh + ";" + BackKovsh;
+        }
+        public int CompareTo(Trac other)
+        {
+            var res = (this as BigTract).CompareTo(other as BigTract);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (FrontKovsh != other.FrontKovsh)
+            {
+                return FrontKovsh.CompareTo(other.FrontKovsh);
+            }
+            if (BackKovsh != other.BackKovsh)
+            {
+                return BackKovsh.CompareTo(other.BackKovsh);
+            }
+
+            return 0;
+        }
+
+        public bool Equals(Trac other)
+        {
+            var res = (this as BigTract).Equals(other as BigTract);
+            if (!res)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (FrontKovsh != other.FrontKovsh)
+            {
+                return false;
+            }
+            if (BackKovsh != other.BackKovsh)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Trac trucObj = obj as Trac;
+            if (trucObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(trucObj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

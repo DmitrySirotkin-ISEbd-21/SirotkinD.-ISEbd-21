@@ -9,7 +9,7 @@ public enum Direction
 }
 namespace WindowsFormsTrac
 {
-    public class BigTract : Vehicle
+    public class BigTract : Vehicle, IComparable<BigTract>, IEquatable<BigTract>
     {
         protected const int tractorWidth = 100;
         protected const int tractorHeight = 60;
@@ -74,6 +74,78 @@ namespace WindowsFormsTrac
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
+        }
+        public int CompareTo(BigTract other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                return MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(BigTract other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            BigTract trucObj = obj as BigTract;
+            if (trucObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                if (trucObj.GetType().Name == "Truc")
+                {
+                    return Equals(trucObj);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

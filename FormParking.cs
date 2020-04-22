@@ -92,6 +92,12 @@ namespace WindowsFormsTrac
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     error.Error(ex.Message);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    logger.Debug("Ошибка: такой автобус уже есть на парковке");
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Машину не удалось поставить");
@@ -146,6 +152,13 @@ namespace WindowsFormsTrac
             form = new FormCarConfig();
             form.AddEvent(AddTruc);
             form.Show();
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }
