@@ -66,7 +66,7 @@ namespace WindowsFormsTrac
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             int counter = -1;
             ITransport trac1 = null;
@@ -86,7 +86,7 @@ namespace WindowsFormsTrac
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
                 while ((line = sr.ReadLine()) != null)
                 {
