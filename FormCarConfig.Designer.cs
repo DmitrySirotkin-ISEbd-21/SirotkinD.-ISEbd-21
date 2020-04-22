@@ -35,7 +35,7 @@
             this.panelTTT = new System.Windows.Forms.Panel();
             this.labelDop = new System.Windows.Forms.Label();
             this.labelMain = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxColors = new System.Windows.Forms.GroupBox();
             this.panelRed = new System.Windows.Forms.Panel();
             this.panelWhite = new System.Windows.Forms.Panel();
             this.panelPurpule = new System.Windows.Forms.Panel();
@@ -49,7 +49,7 @@
             this.groupBoxTTT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTTT)).BeginInit();
             this.panelTTT.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxColors.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxTTT
@@ -128,22 +128,22 @@
             this.labelMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.lableMain_DragDrop);
             this.labelMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.lableMain_DragEnter);
             // 
-            // groupBox1
+            // groupBoxColors
             // 
-            this.groupBox1.Controls.Add(this.panelRed);
-            this.groupBox1.Controls.Add(this.panelWhite);
-            this.groupBox1.Controls.Add(this.panelPurpule);
-            this.groupBox1.Controls.Add(this.panelBlack);
-            this.groupBox1.Controls.Add(this.panelOrange);
-            this.groupBox1.Controls.Add(this.panelLime);
-            this.groupBox1.Controls.Add(this.panelBlue);
-            this.groupBox1.Controls.Add(this.panelYellow);
-            this.groupBox1.Location = new System.Drawing.Point(366, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(152, 218);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Цвета";
+            this.groupBoxColors.Controls.Add(this.panelRed);
+            this.groupBoxColors.Controls.Add(this.panelWhite);
+            this.groupBoxColors.Controls.Add(this.panelPurpule);
+            this.groupBoxColors.Controls.Add(this.panelBlack);
+            this.groupBoxColors.Controls.Add(this.panelOrange);
+            this.groupBoxColors.Controls.Add(this.panelLime);
+            this.groupBoxColors.Controls.Add(this.panelBlue);
+            this.groupBoxColors.Controls.Add(this.panelYellow);
+            this.groupBoxColors.Location = new System.Drawing.Point(366, 12);
+            this.groupBoxColors.Name = "groupBoxColors";
+            this.groupBoxColors.Size = new System.Drawing.Size(152, 218);
+            this.groupBoxColors.TabIndex = 3;
+            this.groupBoxColors.TabStop = false;
+            this.groupBoxColors.Text = "Цвета";
             // 
             // panelRed
             // 
@@ -244,7 +244,7 @@
             this.ClientSize = new System.Drawing.Size(542, 259);
             this.Controls.Add(this.buttonTake);
             this.Controls.Add(this.buttonSet);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxColors);
             this.Controls.Add(this.panelTTT);
             this.Controls.Add(this.groupBoxTTT);
             this.Name = "FormCarConfig";
@@ -252,7 +252,7 @@
             this.groupBoxTTT.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTTT)).EndInit();
             this.panelTTT.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxColors.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -266,7 +266,7 @@
         private System.Windows.Forms.Panel panelTTT;
         private System.Windows.Forms.Label labelDop;
         private System.Windows.Forms.Label labelMain;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxColors;
         private System.Windows.Forms.Panel panelRed;
         private System.Windows.Forms.Panel panelWhite;
         private System.Windows.Forms.Panel panelPurpule;

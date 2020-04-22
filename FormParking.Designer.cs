@@ -1,4 +1,4 @@
-namespace WindowsFormsTrac
+﻿namespace WindowsFormsTrac
 {
     partial class FormParking
     {
