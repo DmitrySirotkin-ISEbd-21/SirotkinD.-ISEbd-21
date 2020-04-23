@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -76,6 +76,36 @@ namespace WindowsFormsTrac
                     MessageBox.Show("Машину не удалось поставить");
                 }
             }
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.SaveData(saveFile.FileName))
+                {
+                    MessageBox.Show("Сохранение успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("?Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.LoadData(openFile.FileName))
+                {
+                    MessageBox.Show("загрузили", "результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("не загрузили", "результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            Draw();
         }
 
         private void listBoxLVL_SelectedIndexChanged(object sender, EventArgs e)

@@ -42,20 +42,20 @@ namespace WindowsFormsTrac
             Draw();
         }
 
+        private void buttonCreateSmall_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width, pictureBoxTrac.Height);
+            Draw();
+        }
+
         private void buttonCreateHigh_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             tractor = new Trac(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green, Color.Gray, true, true);
             tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width,
            pictureBoxTrac.Height);
-            Draw();
-        }
-
-        private void buttonCreateSmall_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            tractor = new BigTract(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
-            tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrac.Width, pictureBoxTrac.Height);
             Draw();
         }
 
