@@ -75,25 +75,6 @@ namespace WindowsFormsTrac
                     }
                 }
             }
-                if (listBoxLVL.SelectedIndex > -1)
-                {
-                    if (NomerMesta.Text != "")
-                    {
-                        var car = parking[listBoxLVL.SelectedIndex] - Convert.ToInt32(NomerMesta.Text);
-                        if (car != null)
-                        {
-                            Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
-                            Graphics gr = Graphics.FromImage(bmp); car.SetPosition(5, 5, pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height);
-                            car.Drawtractor(gr);
-                            pictureBoxTractAfterZabrat.Image = bmp;
-                        }
-                        else
-                        {
-                            Bitmap bmp = new Bitmap(pictureBoxTractAfterZabrat.Width, pictureBoxTractAfterZabrat.Height); pictureBoxTractAfterZabrat.Image = bmp;
-                        }
-                        Draw();
-                    }
-                }Draw();        
         }
 
         private void AddTruc(ITransport tractor)
@@ -111,18 +92,16 @@ namespace WindowsFormsTrac
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     error.Error(ex.Message);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    logger.Debug("Ошибка: такой автобус уже есть на парковке");
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Машину не удалось поставить");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);error.Error(ex.Message);
-                int place = parking[listBoxLVL.SelectedIndex] + tractor;
-                if (place > -1)
-                {
-                    Draw();
-                }
-                else
-                {
-                    MessageBox.Show("Машину не удалось поставить");
                 }
             }
         }
@@ -141,15 +120,6 @@ namespace WindowsFormsTrac
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     error.Error(ex.Message);
-            if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                if (parking.SaveData(saveFile.FileName))
-                {
-                    MessageBox.Show("Сохранение успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("?Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -170,18 +140,6 @@ namespace WindowsFormsTrac
                 }
                 Draw();
             }
-            if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                if (parking.LoadData(openFile.FileName))
-                {
-                    MessageBox.Show("загрузили", "результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("не загрузили", "результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            Draw();
         }
 
         private void listBoxLVL_SelectedIndexChanged(object sender, EventArgs e)
@@ -194,6 +152,13 @@ namespace WindowsFormsTrac
             form = new FormCarConfig();
             form.AddEvent(AddTruc);
             form.Show();
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }

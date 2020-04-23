@@ -17,7 +17,7 @@ namespace WindowsFormsTrac
             parkingStages = new List<Parking<ITransport>>();
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,pictureHeight));
+                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
             }
         }
         public Parking<ITransport> this[int ind]
@@ -31,7 +31,7 @@ namespace WindowsFormsTrac
                 return null;
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -43,26 +43,22 @@ namespace WindowsFormsTrac
                 foreach (var level in parkingStages)
                 {
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (var tractor in level)
                     {
-                        var tractor = level[i];
-                        if (tractor != null)
+                        if (tractor.GetType().Name == "BigTract")
                         {
-                            if (tractor.GetType().Name == "BigTract")
-                            {
-                                sw.WriteLine(i + ":BigTract:" + tractor);
-                            }
-                            if (tractor.GetType().Name == "Trac")
-                            {
-                                sw.WriteLine(i + ":Trac:" + tractor);
-                            }
+                            sw.WriteLine(":BigTract:" + tractor);
+                        }
+                        if (tractor.GetType().Name == "Trac")
+                        {
+                            sw.WriteLine(":Trac:" + tractor);
                         }
                     }
                 }
             }
-            return true;
         }
-        public bool LoadData(string filename)
+    
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -114,9 +110,11 @@ namespace WindowsFormsTrac
                         parkingStages[counter][Convert.ToInt32(splitLine[0])] = trac1;
                     }
                 }
-                return true;
             }
         }
-
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
     }
 }
