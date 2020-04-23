@@ -1,5 +1,3 @@
-
-
 ﻿namespace WindowsFormsTrac
 {
     partial class FormTract
@@ -144,3 +142,4 @@
         private System.Windows.Forms.Button buttonCreate1;
     }
 }
+
