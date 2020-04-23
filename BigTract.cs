@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Drawing;
-public enum Direction
-{
-    Up,
-    Down,
-    Left,
-    Right
-}
 
 namespace WindowsFormsTrac
 {
